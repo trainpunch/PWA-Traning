@@ -4,28 +4,26 @@
   box-sizing: border-box;
 }
 
-/* ===== カラーパレット / トークン ===== */
+/* ===== カラーパレット ===== */
 :root {
   /* ベース（暗い工場の中） */
-  --tp-bg:        #050608;
-  --tp-bg-alt:    #0b1016;
-  --tp-surface:   #0f172a;
-  --tp-surface-soft: rgba(15, 23, 42, 0.92);
-  --tp-border:    #4b5563;
+  --tp-bg:        #050814;   /* ほぼ黒に近い紺 */
+  --tp-bg-alt:    #07111f;   /* ヘッダー・外枠 */
+  --tp-surface:   #101827;   /* カードの鋼板 */
+  --tp-border:    #46566d;   /* 少し明るい鋼色の縁 */
 
   /* 文字色 */
   --tp-text:      #e5e7eb;
   --tp-muted:     #9ca3af;
 
   /* アクセント（銅・グローブ） */
-  --tp-primary:      #d97706;  /* 銅色ベース */
-  --tp-primary-hi:   #fbbf24;  /* ハイライト */
-  --tp-primary-deep: #92400e;
-  --tp-danger:       #e11d48;
+  --tp-primary:    #c56c24;  /* 銅色 */
+  --tp-primary-hi: #f59e0b;  /* ハイライト */
+  --tp-danger:     #e11d48;  /* エラー・削除 */
 
   /* 影・角丸 */
   --tp-shadow-soft: 0 14px 34px rgba(0, 0, 0, 0.9);
-  --tp-radius-card: 18px;
+  --tp-radius-card: 14px;
 }
 
 /* ===== ベース ===== */
@@ -37,42 +35,16 @@ body {
 }
 
 body {
-  font-family: "Roboto Condensed", -apple-system, BlinkMacSystemFont,
-    system-ui, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background:
+    radial-gradient(circle at top center, rgba(180, 83, 9, 0.55), transparent 55%),  /* 奥の夕焼け */
+    radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.9), transparent 55%), /* 右奥の鋼 */
+    var(--tp-bg);
   color: var(--tp-text);
   -webkit-font-smoothing: antialiased;
-  position: relative;
-  min-height: 100vh;
-  background-color: var(--tp-bg);
-  overflow-x: hidden;
 }
 
-/* 歯車背景 + オーバーレイ */
-body::before,
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-}
-
-body::before {
-  background: url("./images/bg-gears.jpg") center center / cover no-repeat;
-  filter: grayscale(0.1);
-  opacity: 0.55;
-}
-
-body::after {
-  z-index: -1;
-  background:
-    radial-gradient(circle at top center, rgba(248, 113, 113, 0.35), transparent 55%),
-    radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.9), transparent 55%),
-    radial-gradient(circle at bottom left, rgba(30, 64, 175, 0.6), transparent 60%);
-  mix-blend-mode: multiply;
-  opacity: 0.95;
-}
-
-/* ===== アプリ枠（今後使う用） ===== */
+/* ===== アプリ枠（任意：今後使う用） ===== */
 .tp-app {
   min-height: 100vh;
   max-width: 720px;
@@ -92,44 +64,18 @@ body::after {
 
 /* ===== ヘッダー ===== */
 .header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  padding: 12px 16px 10px;
-  background: linear-gradient(
-    to bottom,
-    rgba(3, 7, 18, 0.96),
-    rgba(3, 7, 18, 0.92)
-  );
-  border-bottom: 1px solid rgba(148, 163, 184, 0.6);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(12px);
+  padding: 16px;
+  text-align: center;
+  background:
+    linear-gradient(135deg, #050816, #020617);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.55);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.95);
 }
 
-.header-inner {
-  max-width: 720px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.header-logo {
-  max-width: 260px;
-  width: 70%;
-  height: auto;
-  display: block;
-  filter:
-    drop-shadow(0 0 8px rgba(0, 0, 0, 0.9))
-    drop-shadow(0 0 18px rgba(248, 113, 113, 0.5));
-}
-
-/* 他ページ用（テキストh1が残っている場合） */
 .header h1 {
   margin: 0;
-  font-family: "Black Ops One", system-ui, sans-serif;
   font-size: 1.7rem;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #e5e7eb;
   text-shadow:
@@ -141,7 +87,6 @@ body::after {
   margin: 4px 0 0;
   font-size: 0.8rem;
   color: var(--tp-muted);
-  text-align: center;
 }
 
 /* ===== コンテナ ===== */
@@ -153,31 +98,13 @@ body::after {
 
 /* ===== カード ===== */
 .card {
-  position: relative;
-  margin-bottom: 16px;
-  padding: 16px;
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.95), rgba(15, 23, 42, 0.98));
   border-radius: var(--tp-radius-card);
-  background: linear-gradient(
-    145deg,
-    rgba(15, 23, 42, 0.98),
-    rgba(8, 16, 32, 0.98)
-  );
+  padding: 16px;
+  margin-bottom: 16px;
   box-shadow: var(--tp-shadow-soft);
   border: 1px solid var(--tp-border);
-}
-
-/* 金属枠を付けたいところ専用（必要な要素にだけ追加して使う） */
-.tp-panel-metal {
-  border-radius: 18px;
-  border-width: 14px;
-  border-style: solid;
-  border-image-source: url("./images/frame-panel.png");
-  border-image-slice: 170;
-  border-image-repeat: round;
-}
-
-.card--hero {
-  background-color: rgba(15, 23, 42, 0.96);
 }
 
 .card-title {
@@ -186,7 +113,6 @@ body::after {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-family: "Black Ops One", system-ui, sans-serif;
 }
 
 .card-header-row {
@@ -194,15 +120,6 @@ body::after {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-}
-
-/* 折りたたみカード用 */
-.card-collapsible .card-header-row {
-  cursor: pointer;
-}
-.card-toggle-icon {
-  font-size: 1.1rem;
-  color: var(--tp-muted);
 }
 
 /* ===== フォーム ===== */
@@ -226,7 +143,7 @@ label {
   color: var(--tp-muted);
 }
 
-/* 入力系（中身は黒っぽいまま） */
+/* 入力系 */
 input,
 textarea,
 button,
@@ -252,100 +169,49 @@ textarea {
   resize: vertical;
 }
 
-/* ===== ボタン共通 ===== */
-.btn,
+/* ===== ボタン ===== */
 .btn-primary,
-.btn-danger,
-.btn-secondary {
-  position: relative;
+.btn-danger {
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  border-radius: 999px;
-  padding: 9px 16px;
   border: none;
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
+  font-weight: 600;
+  display: inline-block;
+  border-radius: 999px;
+  padding: 9px 14px;
+  text-align: center;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+/* メイン銅ボタン */
+.btn-primary {
+  background: radial-gradient(circle at top, #f97316, #b45309);
+  border: 1px solid #fbbf24;
+  color: #111827;
   text-decoration: none;
-  overflow: hidden;
-  color: #f9fafb;
-}
-
-/* メタルプレート背景（共通） */
-.btn-metal,
-.btn-primary {
-  background-image: url("./images/btn-plate.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow:
-    0 8px 18px rgba(0, 0, 0, 0.9),
-    inset 0 0 0 1px rgba(15, 23, 42, 0.8);
-}
-
-/* 主要ボタン（銅色強め） */
-.btn-metal--primary,
-.btn-primary {
-  box-shadow:
-    0 10px 22px rgba(0, 0, 0, 0.95),
-    0 0 12px rgba(245, 158, 11, 0.6),
-    inset 0 0 0 1px rgba(15, 23, 42, 0.8);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
 }
 
 .btn-primary:visited {
-  color: #f9fafb;
+  color: #111827;
 }
 
-.btn-metal:hover,
 .btn-primary:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.05);
+  opacity: 0.96;
+  transform: translateY(-0.5px);
 }
 
-.btn-metal:active,
 .btn-primary:active {
   transform: translateY(1px) scale(0.98);
-  box-shadow:
-    inset 0 5px 10px rgba(0, 0, 0, 0.85),
-    0 0 0 rgba(0, 0, 0, 0);
-}
-
-/* サブボタン（グレー寄りプレート） */
-.btn-secondary {
-  background-image: url("./images/btn-plate.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: grayscale(0.3) brightness(0.9);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8);
-  color: #e5e7eb;
-}
-
-.btn-secondary:hover {
-  filter: grayscale(0.2) brightness(1);
-  transform: translateY(-1px);
-}
-
-.btn-secondary:active {
-  transform: translateY(1px) scale(0.98);
-  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.85);
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.8);
 }
 
 /* 危険系ボタン（削除など） */
 .btn-danger {
-  background-image: url("./images/btn-plate.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow:
-    0 8px 18px rgba(0, 0, 0, 0.95),
-    0 0 10px rgba(248, 113, 113, 0.45);
+  background: radial-gradient(circle at top, #fb7185, #b91c1c);
+  border: 1px solid #fecaca;
   color: #fee2e2;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.7);
 }
 
 .btn-danger.small {
@@ -354,11 +220,11 @@ textarea {
   font-size: 0.8rem;
 }
 
-/* 行削除ボタン（テーブル内） */
+/* 行削除ボタン */
 .btn-row-delete {
   padding: 2px 4px;
   font-size: 0.7rem;
-  background: #7f1d1d;
+  background: #b91c1c;
   border: 1px solid #fecaca;
   border-radius: 4px;
   cursor: pointer;
@@ -388,14 +254,11 @@ textarea {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.75rem;
-  background-color: rgba(15, 23, 42, 0.9);
-  border-radius: 10px;
-  overflow: hidden;
 }
 
 .log-table th,
 .log-table td {
-  border-bottom: 1px solid rgba(55, 65, 81, 0.8);
+  border-bottom: 1px solid var(--tp-border);
   padding: 4px 6px;
   vertical-align: top;
 }
@@ -404,7 +267,6 @@ textarea {
   text-align: left;
   white-space: nowrap;
   color: var(--tp-muted);
-  font-weight: 500;
 }
 
 .log-table td:last-child {
@@ -432,16 +294,16 @@ textarea {
   text-align: center;
   padding: 6px 4px;
   border-radius: 999px;
-  border: 1px solid rgba(75, 85, 99, 0.9);
+  border: 1px solid var(--tp-border);
   background: rgba(15, 23, 42, 0.96);
   color: var(--tp-muted);
   text-decoration: none;
   white-space: nowrap;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(4px);
 }
 
 .tab-nav .tab.active {
-  background: linear-gradient(to right, #f97316, #b45309);
+  background: linear-gradient(to right, #f97316, #c56c24);
   border-color: #fbbf24;
   color: #0b1020;
   font-weight: 700;
@@ -573,19 +435,12 @@ textarea {
 
 /* ===== 大きい画面用 ===== */
 @media (min-width: 768px) {
-  .header-inner {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .header h1 {
-    font-size: 1.9rem;
+    font-size: 1.8rem;
   }
-
   .container {
     padding: 24px;
   }
-
   .card {
     padding: 20px;
   }
