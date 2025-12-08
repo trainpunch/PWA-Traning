@@ -4,23 +4,9 @@
   <meta charset="UTF-8">
   <title>Train Punch | ホーム</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#050608">
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Roboto+Condensed:wght@300;400;500;700&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- Icons & Manifest -->
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/icon-glove-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="./images/icon-glove-192.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="./images/icon-glove-192.png">
-  <link rel="manifest" href="./manifest.webmanifest">
-
+  <meta name="theme-color" content="#0b1016">
   <link rel="stylesheet" href="./style.css">
+  <link rel="manifest" href="./manifest.webmanifest">
 
   <!-- ホーム専用スタイル：大きめボタンを全幅に -->
   <style>
@@ -38,18 +24,12 @@
 </head>
 <body>
   <header class="header">
-    <div class="header-inner">
-      <img
-        src="./images/logo-trainpunch.png"
-        alt="Train Punch"
-        class="header-logo"
-      >
-      <p class="header-sub">トレーニング記録を続けたい人のためのミニアプリ</p>
-    </div>
+    <h1>Train Punch</h1>
+    <p class="header-sub">トレーニング記録を続けたい人のためのミニアプリ</p>
   </header>
 
   <main class="container">
-    <section class="card card--hero">
+    <section class="card">
       <h2 class="card-title">メニュー</h2>
       <p style="font-size:0.9rem; color:var(--tp-muted); margin-bottom:12px;">
         今は「トレーニング記録」「ショップ」、そしてブログページへのリンクだけですが、ここから機能を増やしていけます。
@@ -59,7 +39,7 @@
       <a
         id="open-session"
         href="./session.html"
-        class="btn btn-metal btn-metal--primary home-menu-btn"
+        class="btn-primary home-menu-btn"
       >
         Train Punch を開く
       </a>
@@ -67,7 +47,7 @@
       <!-- ショップへ（内部ページ） -->
       <a
         href="./shop.html"
-        class="btn btn-metal home-menu-btn"
+        class="btn-primary home-menu-btn"
       >
         ショップを開く
       </a>
@@ -75,7 +55,7 @@
       <!-- ブログへ（内部ページ：blog.html） -->
       <a
         href="./blog.html"
-        class="btn btn-metal home-menu-btn"
+        class="btn-primary home-menu-btn"
       >
         ブログを開く
       </a>
@@ -137,4 +117,4 @@
     });
   </script>
 </body>
-</html> 
+</html>
