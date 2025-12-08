@@ -18,10 +18,10 @@
   --tp-muted:     #9ca3af;
 
   /* アクセント（銅・グローブ） */
-  --tp-primary:     #d97706;  /* 銅色ベース */
-  --tp-primary-hi:  #fbbf24;  /* ハイライト */
-  --tp-primary-deep:#92400e;
-  --tp-danger:      #e11d48;
+  --tp-primary:      #d97706;  /* 銅色ベース */
+  --tp-primary-hi:   #fbbf24;  /* ハイライト */
+  --tp-primary-deep: #92400e;
+  --tp-danger:       #e11d48;
 
   /* 影・角丸 */
   --tp-shadow-soft: 0 14px 34px rgba(0, 0, 0, 0.9);
@@ -96,7 +96,11 @@ body::after {
   top: 0;
   z-index: 20;
   padding: 12px 16px 10px;
-  background: linear-gradient(to bottom, rgba(3, 7, 18, 0.96), rgba(3, 7, 18, 0.92));
+  background: linear-gradient(
+    to bottom,
+    rgba(3, 7, 18, 0.96),
+    rgba(3, 7, 18, 0.92)
+  );
   border-bottom: 1px solid rgba(148, 163, 184, 0.6);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(12px);
@@ -153,17 +157,25 @@ body::after {
   margin-bottom: 16px;
   padding: 16px;
   border-radius: var(--tp-radius-card);
-  background-color: var(--tp-surface-soft);
+  background: linear-gradient(
+    145deg,
+    rgba(15, 23, 42, 0.98),
+    rgba(8, 16, 32, 0.98)
+  );
   box-shadow: var(--tp-shadow-soft);
-  /* 枠付きパネルテクスチャ */
-  border: 12px solid transparent;
-  border-image-source: url("./images/frame-panel.png");
-  border-image-slice: 170 fill;
-  border-image-width: 12;
-  border-image-repeat: stretch;
+  border: 1px solid var(--tp-border);
 }
 
-/* ホーム用ちょい目立たせ */
+/* 金属枠を付けたいところ専用（必要な要素にだけ追加して使う） */
+.tp-panel-metal {
+  border-radius: 18px;
+  border-width: 14px;
+  border-style: solid;
+  border-image-source: url("./images/frame-panel.png");
+  border-image-slice: 170;
+  border-image-repeat: round;
+}
+
 .card--hero {
   background-color: rgba(15, 23, 42, 0.96);
 }
@@ -223,7 +235,7 @@ select {
   padding: 8px;
   border-radius: 8px;
   border: 1px solid var(--tp-border);
-  background: #020617; /* ←黒ベース維持 */
+  background: #020617;
   color: var(--tp-text);
   font-size: 0.95rem;
 }
