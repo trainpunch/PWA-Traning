@@ -1,5 +1,5 @@
 // Service Worker for Train Punch
-const CACHE_NAME = 'train-punch-cache-v52';
+const CACHE_NAME = 'train-punch-cache-v50';
 
 const ASSETS = [
   './',
@@ -10,21 +10,12 @@ const ASSETS = [
   './settings.html',
   './shop.html',
   './blog.html',
-  './about.html',     // アプリ説明
-  './privacy.html',   // プライバシーポリシー
+  './about.html',     // ★ 追加
+  './privacy.html',   // ★ 追加
   './style.css',
   './app.js',
   './manifest.webmanifest',
-  './posts.json',     // 旧方式のファイル。残しておいても害はないのでそのままでもOK
-
-  // ▼ 新しいUI用画像アセット ▼
-  './images/bg-gears.jpg',
-  './images/btn-plate.png',
-  './images/frame-panel.png',
-  './images/logo-trainpunch.png',
-  './images/icon-glove-32.png',
-  './images/icon-glove-192.png',
-  './images/icon-glove-512.png'
+  './posts.json'      // 旧方式のファイル。残しておいても害はないのでそのままでもOK
 ];
 
 self.addEventListener('install', event => {
